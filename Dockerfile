@@ -4,7 +4,7 @@ ARG PSR_VERSION=1.1.0
 ARG PHALCON_VERSION=4.1.2
 ARG PHALCON_EXT_PATH=php7/64bits
 
-RUN apt update && apt install -y libzip-dev
+RUN apt update && apt install -y unzip libzip-dev
 
 RUN set -xe && \
     # Download PSR, see https://github.com/jbboehr/php-psr
