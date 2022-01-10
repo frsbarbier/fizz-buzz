@@ -45,7 +45,7 @@ str2 : second string
   
 This endpoint return string with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2 are replaced by str1str2, like this : "1,2,fizz,4,buzz,fizz,7,8,fizz,buzz,11,fizz,13,14,fizzbuzz,16,..." 
 
-The operationnal code is defined in the [file](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Controllers/Api.php#L123-L159), in the doFizzBuzz method
+The operationnal code is defined in the [src/Controllers/Api.php](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Controllers/Api.php#L123-L159) file, in the doFizzBuzz method
 
 
 - stats:  
@@ -53,10 +53,10 @@ The operationnal code is defined in the [file](https://github.com/frsbarbier/fiz
 This endpoint returns the most used fizzbuzz request, with query parameters and the number of hits, like {"hit": 5, "int1": 1, "int2": 2, "limit": 100, "str1": "fizz", "str2": "buzz"}
 
 A middleware is triggered for fizzbuzz request to increase the number of hits, and save paramaters in the redis server, in order to get stats.
-The operationnal code is defined in the [file](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Middlewares/FizzBuzz.php#L18-L28)
+The operationnal code is defined in the [src/Middlewares/FizzBuzz.php](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Middlewares/FizzBuzz.php#L18-L28) file
 
 In order to retrieve the top request, ZREVRANGE redis function is used, to get the greater hit and the request parameters.
-The operationnal code is defined in the [file](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Models/Stat.php#L144-L160), in the getTopRequest method
+The operationnal code is defined in the [src/Models/Stat.php](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Models/Stat.php#L144-L160) file, in the getTopRequest method
 
 There are different ways to test application :
 - use [curl](https://curl.se) in CLI, 
@@ -71,12 +71,12 @@ There are different ways to test application :
 docker-compose exec web vendor/bin/phpunit
 ```
 
-### Generating API Documentation with phpDocumentor
+### Generating API Documentation with [phpDocumentor](https://www.phpdoc.org)
 ```bash
 docker run --rm -v $(pwd):/data phpdoc/phpdoc:3 -d . -t ./docs/api --ignore vendor/ --ignore tests/
 ```
 
-### Generating swagger.json for Swagger UI
+### Generating swagger.json for [Swagger UI](https://swagger.io/tools/swagger-ui)
 ```bash
 docker-compose exec web vendor/bin/openapi --format json --output public/swagger/swagger.json src/
 ````
