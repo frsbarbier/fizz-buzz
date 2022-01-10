@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Phalcon\Di;
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Incubator\Test\PhpUnit\UnitTestCase;
+use Phalcon\Incubator\Test\PHPUnit\UnitTestCase;
 use PHPUnit\Framework\IncompleteTestError;
 
 abstract class AbstractUnitTest extends UnitTestCase
