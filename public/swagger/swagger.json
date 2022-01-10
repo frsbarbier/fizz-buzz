@@ -1,0 +1,214 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "FizzBuzz REST API",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8080/api",
+            "description": "Server REST"
+        }
+    ],
+    "paths": {
+        "/fizzbuzz/{int1}/{int2}/{limit}/{str1}/{str2}": {
+            "get": {
+                "summary": "FizzBuzz endpoint",
+                "description": "API FizzBuzz endpoint",
+                "operationId": "a09401ca10b9562dd72e696af5af155a",
+                "parameters": [
+                    {
+                        "name": "int1",
+                        "in": "path",
+                        "description": "A number whose multiple will be replaced by 'str1' parameter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "int2",
+                        "in": "path",
+                        "description": "A number whose multiple will be replaced by 'str2' parameter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "path",
+                        "description": "A number to limit list of fizz-buzz numbers. Must be between 1 and 1000",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "str1",
+                        "in": "path",
+                        "description": "String that will replace by 'int1' parameter",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "str2",
+                        "in": "path",
+                        "description": "String that will replace by 'int2' parameter",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Fizzbuzz success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Fizzbuzz string list separate by comma",
+                                    "type": "string"
+                                },
+                                "example": "1,fizz,3,fizz,buzz,fizz,7,fizz,9,fizzbuzz,11,fizz,13,fizz,buzz"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Fizzbuzz error response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/stats": {
+            "get": {
+                "summary": "Stats endpoint",
+                "description": "API Stats endpoint",
+                "operationId": "56f829453f6ebe2297c1d48db438f05f",
+                "responses": {
+                    "200": {
+                        "description": "Stat success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/Stat"
+                                        },
+                                        {}
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Error": {
+                "description": "Error handler",
+                "properties": {
+                    "code": {
+                        "title": "code",
+                        "description": "Error code",
+                        "type": "integer",
+                        "example": "500"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "Error status",
+                        "type": "string",
+                        "example": "error"
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "Error message",
+                        "type": "string",
+                        "example": "An error occured."
+                    }
+                },
+                "type": "object"
+            },
+            "Stat": {
+                "title": "Stat",
+                "description": "Stat model",
+                "required": [
+                    "hit",
+                    "int1",
+                    "int2",
+                    "limit",
+                    "str1",
+                    "str2"
+                ],
+                "properties": {
+                    "hit": {
+                        "title": "hit",
+                        "description": "Number of hits for request",
+                        "type": "integer",
+                        "format": "int",
+                        "example": "5"
+                    },
+                    "int1": {
+                        "title": "int1",
+                        "description": "Request paramater 'int1'",
+                        "type": "integer",
+                        "format": "int",
+                        "example": "1"
+                    },
+                    "int2": {
+                        "title": "int2",
+                        "description": "Request paramater 'int2'",
+                        "type": "integer",
+                        "format": "int",
+                        "example": "3"
+                    },
+                    "limit": {
+                        "title": "limit",
+                        "description": "Request paramater 'limit'",
+                        "type": "integer",
+                        "format": "int",
+                        "example": "100"
+                    },
+                    "str1": {
+                        "title": "str1",
+                        "description": "Request paramater 'str1'",
+                        "type": "string",
+                        "format": "string",
+                        "example": "fizz"
+                    },
+                    "str2": {
+                        "title": "str2",
+                        "description": "Request paramater 'str2'",
+                        "type": "string",
+                        "format": "string",
+                        "example": "buzz"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "responses": {
+            "404": {
+                "description": "Not Found error response",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Error"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
