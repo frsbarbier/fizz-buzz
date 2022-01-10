@@ -45,7 +45,7 @@ str2 : second string
   
 This endpoint return string with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2 are replaced by str1str2, like this : "1,2,fizz,4,buzz,fizz,7,8,fizz,buzz,11,fizz,13,14,fizzbuzz,16,..." 
 
-The operationnal code is defined in the [file](src/Controllers/Api.php), in the doFizzBuzz method
+The operationnal code is defined in the [file](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Controllers/Api.php#L123-L159), in the doFizzBuzz method
 
 
 - stats:  
@@ -53,10 +53,10 @@ The operationnal code is defined in the [file](src/Controllers/Api.php), in the 
 This endpoint returns the most used fizzbuzz request, with query parameters and the number of hits, like {"hit": 5, "int1": 1, "int2": 2, "limit": 100, "str1": "fizz", "str2": "buzz"}
 
 A middleware is triggered for fizzbuzz request to increase the number of hits, and save paramaters in the redis server, in order to get stats.
-The operationnal code is defined in the [file](src/Middlewares/FizzBuzz.php)
+The operationnal code is defined in the [file](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Middlewares/FizzBuzz.php#L18-L28)
 
 In order to retrieve the top request, ZREVRANGE redis function is used, to get the greater hit and the request parameters.
-The operationnal code is defined in the [file](src/Models/Stat.php), in the getTopRequest method
+The operationnal code is defined in the [file](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Models/Stat.php#L144-L160), in the getTopRequest method
 
 There are different ways to test application :
 - use [curl](https://curl.se) in CLI, 
@@ -64,7 +64,7 @@ There are different ways to test application :
 - use client like [Postman](https://www.postman.com)
 - use swagger UI : http://127.0.0.1:8080/swagger
 
-[Visit API doc](docs/api/index.html)
+[Visit API doc](https://rawcdn.githack.com/frsbarbier/fizz-buzz/main/docs/api/index.html)
 
 ### Run unit tests
 ```bash
