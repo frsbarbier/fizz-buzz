@@ -53,9 +53,10 @@ The operationnal code is defined in the [src/Controllers/Api.php](https://github
 This endpoint returns the most used fizzbuzz request, with query parameters and the number of hits, like {"hit": 5, "int1": 1, "int2": 2, "limit": 100, "str1": "fizz", "str2": "buzz"}
 
 A middleware is triggered for fizzbuzz request to increase the number of hits, and save paramaters in the redis server, in order to get stats.
-The operationnal code is defined in the [src/Middlewares/FizzBuzz.php](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Middlewares/FizzBuzz.php#L18-L28) file
+The operationnal code is defined in the [src/Middlewares/FizzBuzz.php](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Middlewares/FizzBuzz.php#L18-L28) file.  
+To increase hits number, [ZINCRBY](https://redis.io/commands/ZINCRBY) redis function is used in the [src/Models/Stat.php](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Models/Stat.php#L116-L123) file
 
-In order to retrieve the top request, ZREVRANGE redis function is used, to get the greater hit and the request parameters.
+In order to retrieve the top request, [ZREVRANGE](https://redis.io/commands/zrevrange) redis function is used, to get the greater hit and the request parameters.
 The operationnal code is defined in the [src/Models/Stat.php](https://github.com/frsbarbier/fizz-buzz/blob/5b283fd3681e1c2e11e99adde3d04dd085580a6d/src/Models/Stat.php#L144-L160) file, in the getTopRequest method
 
 There are different ways to test application :
