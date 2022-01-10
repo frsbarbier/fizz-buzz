@@ -13,7 +13,7 @@ A fizz-buzz REST API written in php with Phalcon Framework
 
 Clone the project:
 ```bash
-git clone https://github.com/fbarbier/fizz-buzz.git
+git clone https://github.com/frsbarbier/fizz-buzz.git
 cd fizz-buzz
 git checkout main
 ```
